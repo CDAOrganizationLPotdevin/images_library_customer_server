@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ImageController!{% endblock %}
+
+{% block body %}
+    <div class="image-container-detail">
+        <div class="image-container-detail-header">
+            <button class="interactive-gallery-component" onclick="window.history.back();">Retour</button>
+            <div class="gallery-component">{{ name }}</div>
+            <form>
+                <input type="hidden" name="url" value="{{ url }}" />
+                <input type="hidden" name="name" value="{{ name }}" />
+                <input class="interactive-gallery-component" type="submit" value="Télécharger" />
+            </form>
+        </div>
+        <div class="image-wrapper-detail">
+            <img src="{{ url }}" alt="{{ name }}"/>
+        </div>
+    </div>
+{% endblock %}
+

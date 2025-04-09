@@ -1,7 +1,16 @@
 body {
-    background-color: white;
     padding: 7%;
     background: linear-gradient(to right, #AAAAAA 0%, white 30%, white 70%, #AAAAAA 100%);
+    font-family: 'Roboto', sans-serif;
+}
+
+button, input {
+    border: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
 }
 
 .image-container {
@@ -11,26 +20,75 @@ body {
     gap: 12px;
 }
 
+.gallery-component {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-align: center;
+    max-height: 48px;
+}
+
+.interactive-gallery-component {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-align: center;
+    max-height: 48px;
+}
+
+.interactive-gallery-component:hover {
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.image-container-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container-detail-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
 .image-wrapper {
     position: relative;
     display: inline-block;
     overflow: hidden;
 }
 
-.image-wrapper img {
-
-    max-width: 350px;
-    max-height: 280px;
-
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
+.image-wrapper-detail {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
 }
 
-.image-wrapper img:hover {
+.image-wrapper-detail img {
+    transition: transform 0.1s ease-in-out;
+}
+
+.image-wrapper .gallery-img {
+    max-width: 350px;
+    max-height: 280px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.image-wrapper .gallery-img:hover {
     transform: scale(1.03);
 }
 
-.image-wrapper .hover-text {
+.image-wrapper .hover-content {
     position: absolute;
     top: 85%;
     left: 50%;
@@ -42,12 +100,11 @@ body {
     padding: 8px 16px;
     border-radius: 4px;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
     text-align: center;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif;
 }
 
-.image-wrapper:hover .hover-text {
+.image-wrapper:hover .hover-content {
     opacity: 1;
 }
