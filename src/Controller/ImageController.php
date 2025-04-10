@@ -5,8 +5,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 
 final class ImageController extends AbstractController
 {
@@ -37,5 +39,34 @@ final class ImageController extends AbstractController
             'name' => $name,
             'filename' => $filename,
         ]);
+    }
+
+    #[Route('/image/download', name:'app_image_download', methods: ['GET'])]
+    public function proxyImage(Request $request): Response
+    {
+        $client = HttpClient::create();
+
+        try {
+            $url = $request->query->get('url');
+            $imageResponse = $client->request('GET', $url);
+            
+            if ($imageResponse->getStatusCode() !== 200) {
+                throw new \Exception('Erreur lors du téléchargement de l\'image.');
+            }
+
+            $response = new Response($imageResponse->getContent());
+            $response->headers->set('Access-Control-Allow-Origin', '*');
+            $response->headers->set('Content-Type', $imageResponse->getHeaders()['content-type'][0]);
+
+
+            $filename = basename($url);
+            $response->headers->set('Content-Disposition', 'attachment; filename="' . $filename . '"');
+
+
+            return $response;
+
+        } catch (\Exception $e) {
+            return new Response('Erreur: ' . $e->getMessage(), 500);
+        }
     }
 }
