@@ -7,15 +7,49 @@
         <div class="image-container-detail-header">
             <button class="interactive-gallery-component" onclick="window.history.back();">Retour</button>
             <div class="gallery-component">{{ name }}</div>
-            <form>
-                <input type="hidden" name="url" value="{{ url }}" />
-                <input type="hidden" name="name" value="{{ name }}" />
-                <input class="interactive-gallery-component" type="submit" value="Télécharger" />
-            </form>
+            <div id="download-btn" class="interactive-gallery-component">Télécharger</div>
         </div>
         <div class="image-wrapper-detail">
             <img src="{{ url }}" alt="{{ name }}"/>
         </div>
     </div>
+
+    <script>
+        async function downloadImage(imageUrl, fileName) {
+            try {
+                // Récupérer l'image sous forme de blob
+                const response = await fetch(imageUrl, { mode: 'cors' }); // Assurez-vous que le serveur distant autorise CORS
+                if (!response.ok) {
+                    throw new Error(`Erreur : ${response.statusText}`);
+                }
+
+                const blob = await response.blob();
+
+                // Créer une URL pour le blob
+                const blobUrl = window.URL.createObjectURL(blob);
+
+                // Créer un lien de téléchargement invisible
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                // Nom du fichier
+                link.download = fileName || 'image.jpg';
+
+                // Simuler un clic pour démarrer le téléchargement
+                document.body.appendChild(link);
+                link.click();
+
+                // Nettoyer le lien pour éviter les fuites de mémoire
+                link.remove();
+                window.URL.revokeObjectURL(blobUrl);
+            } catch (error) {
+                console.error('Impossible de télécharger l\'image :', error);
+            }
+        }
+
+        document.getElementById('download-btn').addEventListener('click', function () {
+            downloadImage("{{ url }}", "{{ filename }}");
+        });
+    </script>
+
 {% endblock %}
 
