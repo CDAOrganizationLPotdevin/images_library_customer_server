@@ -9,10 +9,10 @@
 			{% if not image.deleted %}
 
 				<form action="{{ path('app_image_detail') }}" method="post">
-					<input type="hidden" name="url" value="{{ image.url }}">
+					<input type="hidden" name="id" value="{{ image.id }}">
 					<input type="hidden" name="name" value="{{ image.name }}">
 					<div class="image-wrapper">
-						<input class="gallery-img" type="image" src="{{ image.url }}" alt="submit">
+						<input class="gallery-img" type="image" src="http://localhost:8000/image_proxy_display/{{ image.id }}" alt="submit">
 						<div class="hover-content">{{ image.name }}</div>
 					</div>
 				</form>
