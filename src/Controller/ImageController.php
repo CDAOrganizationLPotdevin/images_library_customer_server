@@ -19,7 +19,7 @@ final class ImageController extends AbstractController
     #[Route('/', name: 'app_images', methods: ['GET'])]
     public function index(): Response
     {
-        $response = $this->client->request('GET', 'http://127.0.0.1:8002/api/images')->toArray();
+        $response = $this->client->request('GET', 'http://127.0.0.1:8002/images')->toArray();
         $images = $response['member'];
 
         return $this->render('image/index.html.twig', [
