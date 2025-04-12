@@ -41,4 +41,10 @@ final class ImageController extends AbstractController
             'filename' => $filename,
         ]);
     }
+
+    #[Route('/image/add', name: 'app_image_add', methods: ['GET'])]
+    public function add_image(): Response
+    {
+        return $this->render('image/add_image.html.twig');
+    }
 }
