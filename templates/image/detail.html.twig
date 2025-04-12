@@ -7,10 +7,11 @@
         <div class="image-container-detail-header">
             <a href="{{ path('app_images') }}" class="interactive-gallery-component">Retour</a>
             <div class="gallery-component">{{ name }}</div>
-            <a href="{{ path('app_image_download', { 'url': url }) }}" class="interactive-gallery-component">Télécharger</a>
+            <a href="http://localhost:8000/image_proxy_download/{{ id }}", class="interactive-gallery-component">Télécharger</a>
         </div>
         <div class="image-wrapper-detail">
-            <img src="{{ url }}" alt="{{ name }}"/>
+            <img src="http://localhost:8000/image_proxy_display/{{ id }}" alt="{{ name }}"/>
+
         </div>
     </div>
 {% endblock %}

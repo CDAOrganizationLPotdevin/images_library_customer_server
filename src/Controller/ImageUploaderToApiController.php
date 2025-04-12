@@ -23,6 +23,7 @@ final class ImageUploaderToApiController extends AbstractController
 
 
 
+            // Envoie de l'image via la méthode POST vers l'api via la route upload/images (voir imageUploaderController sur le serveur api)
             $client->post('http://localhost:8002/upload/images', [
                 'headers' => [
                     'Accept' => 'application/json',
@@ -35,7 +36,7 @@ final class ImageUploaderToApiController extends AbstractController
                     ],
                 ],
             ]);
-            
+            // Redirection vers la liste des images
             return $this->redirectToRoute('app_images');
             
             
