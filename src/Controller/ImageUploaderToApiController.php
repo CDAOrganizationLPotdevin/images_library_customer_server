@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use GuzzleHttp\Client;
@@ -10,13 +11,17 @@ use GuzzleHttp\Client;
 
 final class ImageUploaderToApiController extends AbstractController
 {
-    #[Route('/image/uploader', name: 'app_image_uploader_to_api')]
-    public function uploadImageToApi():Response      
+    #[Route('/image/uploader', name: 'app_image_uploader_to_api', methods: ['POST'])]
+    public function uploadImageToApi(Request $request):Response
 
     {
         try {
-
             $client = new Client();
+            $uploadedFile = $request->files->get('uploaded_image');
+            $name = $request->request->get('name');
+            $contents = $uploadedFile->getRealPath();
+
+
 
             $client->post('http://localhost:8002/upload/images', [
                 'headers' => [
@@ -25,8 +30,8 @@ final class ImageUploaderToApiController extends AbstractController
                 'multipart' => [
                     [
                         'name' => 'image',
-                        'contents' => fopen('C:\Users\Decks\Pictures\Cyberpunk 2077\photomode_10042025_234038.png', 'r'),
-                        'filename' => 'limage.jpg',
+                        'contents' => fopen($contents, 'r'),
+                        'filename' => $name,
                     ],
                 ],
             ]);

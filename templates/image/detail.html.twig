@@ -5,18 +5,13 @@
 {% block body %}
     <div class="image-container-detail">
         <div class="image-container-detail-header">
-            <button class="interactive-gallery-component" onclick="window.history.back();">Retour</button>
+            <a href="{{ path('app_images') }}" class="interactive-gallery-component">Retour</a>
             <div class="gallery-component">{{ name }}</div>
-            <a href="{{ path('app_image_download', { 'url': url }) }}", class="interactive-gallery-component">Télécharger</a>
+            <a href="{{ path('app_image_download', { 'url': url }) }}" class="interactive-gallery-component">Télécharger</a>
         </div>
         <div class="image-wrapper-detail">
             <img src="{{ url }}" alt="{{ name }}"/>
         </div>
     </div>
-
-    <script>
-       
-    </script>
-
 {% endblock %}
 

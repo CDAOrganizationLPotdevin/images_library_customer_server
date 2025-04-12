@@ -41,6 +41,12 @@ final class ImageController extends AbstractController
         ]);
     }
 
+    #[Route('/image/add', name: 'app_image_add', methods: ['GET', 'POST'])]
+    public function add_image(Request $request): Response
+    {
+        return $this->render('image/add_image.html.twig');
+    }
+
     #[Route('/image/download', name:'app_image_download', methods: ['GET'])]
     public function proxyImage(Request $request): Response
     {

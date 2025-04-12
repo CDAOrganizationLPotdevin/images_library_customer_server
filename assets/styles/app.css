@@ -18,7 +18,16 @@ a {
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-    padding: 7%;
+    padding: 0% 7%;
+}
+
+.image-container-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    margin-top: 48px;
 }
 
 .gallery-component {
@@ -41,6 +50,17 @@ a {
     border-radius: 6px;
     text-align: center;
     max-height: 48px;
+}
+
+.interactive-gallery-component-small {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-align: center;
+    max-height: 30px;
 }
 
 .interactive-gallery-component:hover {
@@ -109,4 +129,57 @@ a {
 
 .image-wrapper:hover .hover-content {
     opacity: 1;
+}
+
+.file-input {
+    color: white;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.file-input::file-selector-button {
+    margin-right: 8px;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+}
+
+.file-input:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.file-input::file-selector-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.form-image-add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    gap: 24px;
+}
+
+.form-image-text {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-image-text:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+.form-image-text::placeholder {
+    color: white;
 }

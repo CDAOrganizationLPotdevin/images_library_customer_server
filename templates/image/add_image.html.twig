@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ImageController!
+{% endblock %}
+
+{% block body %}
+    <div class="image-container-header">
+        <a href="{{ path('app_images') }}" class="interactive-gallery-component">Retour</a>
+    </div>
+    <form method="post" action="{{ path('app_image_uploader_to_api') }}" enctype="multipart/form-data">
+        <div class="form-image-add">
+            <input class="file-input" type="file" name="uploaded_image" id="uploaded_image" accept=".jpg,.jpeg,.png" required>
+            <input class="form-image-text" type="text" name="name" id="name" placeholder="Nom de l'image" required>
+            <button class="interactive-gallery-component-small" type="submit">Envoyer le fichier</button>
+        </div>
+    </form>
+{% endblock %}
