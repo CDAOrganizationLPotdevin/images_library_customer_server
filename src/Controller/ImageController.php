@@ -16,6 +16,7 @@ final class ImageController extends AbstractController
         private HttpClientInterface $client,
     ) {}
 
+    // route permettant l'affichage de la liste des images
     #[Route('/', name: 'app_images', methods: ['GET'])]
     public function index(): Response
     {
@@ -28,6 +29,7 @@ final class ImageController extends AbstractController
         ]);
     }
 
+    // Route permettant l'affichage de la liste des details d'une images
     #[Route('/image', name: 'app_image_detail', methods: ['POST'])]
     public function detail(Request $request): Response
     {
@@ -41,7 +43,7 @@ final class ImageController extends AbstractController
             'filename' => $filename,
         ]);
     }
-
+    // route permettant l'ajout d'une image
     #[Route('/image/add', name: 'app_image_add', methods: ['GET'])]
     public function add_image(): Response
     {

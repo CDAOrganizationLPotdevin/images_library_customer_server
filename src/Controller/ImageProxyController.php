@@ -17,6 +17,7 @@ class ImageProxyController extends AbstractController
     {
         $this->httpClient = $httpClient;
     }
+    // Méthode permettant la récupération et l'affichage d'une image
 
     #[Route('/image_proxy_display/{id}', name: 'app_image_proxy_display')]
     public function fetchImage(Request $request, int $id): Response
@@ -40,6 +41,7 @@ class ImageProxyController extends AbstractController
         $test = new Response($content, 200, ['Content-Type' => $mimeType]);
         return $test ; 
     }
+    // Route permettant la récupération et le téléchargement d'une image
     #[Route('/image_proxy_download/{id}', name: 'app_image_proxy_download')]
     public function downloadImage(Request $request, int $id): Response
     {

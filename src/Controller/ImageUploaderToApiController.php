@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 
 final class ImageUploaderToApiController extends AbstractController
 {
+    // Route permettant l'upload d'une image sur le serveur api via le formulaire d'ajout d'une image
     #[Route('/image/uploader', name: 'app_image_uploader_to_api', methods: ['POST'])]
     public function uploadImageToApi(Request $request):Response
 
