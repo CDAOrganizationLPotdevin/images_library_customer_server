@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ImageController!{% endblock %}
+
+{% block body %}
+    <div class="image-container-detail">
+        <div class="image-container-detail-header">
+            <a href="{{ path('app_images') }}" class="interactive-gallery-component">Retour</a>
+            <div class="gallery-component">{{ name }}</div>
+            <a href="http://localhost:8000/image_proxy_download/{{ id }}", class="interactive-gallery-component">Télécharger</a>
+        </div>
+        <div class="image-wrapper-detail">
+            <img src="http://localhost:8000/image_proxy_display/{{ id }}" alt="{{ name }}"/>
+
+        </div>
+    </div>
+{% endblock %}
+
